@@ -1,0 +1,96 @@
+#!/bin/bash -i
+
+others()
+{
+ echo -e "\e[32m 1. another information \e[0m "
+    echo -e "\e[32m 2. Exit \e[0m "
+
+ read -p "need something else : " choice
+
+case $choice in
+                1) welcome
+                   ;;
+       		 2)exit
+
+		;;
+ *) echo -e "\e[91mPlease choose currect option\e[0m"
+                    welcome
+;;
+    esac      
+
+
+}
+
+header ()
+
+{   sleep 2s 
+    clear  
+	echo *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+    	echo
+    	echo -e "            \e[41m System information tool  \e[0m               "
+	
+	echo ----------------------------------------------------
+
+}
+
+welcome ()
+{
+    	header
+    echo -e "\e[32m 1. RAM  usage \e[0m "
+    echo -e "\e[32m 2. Disk usage \e[0m "
+    echo -e "\e[32m 3. CPU  usage \e[0m "
+    echo -e "\e[32m 4. logged users \e[0m "
+    echo -e "\e[32m 5. uptime \e[0m "
+    echo -e "\e[32m 6. network information \e[0m "
+    echo -e "\e[32m 7. date and time \e[0m "
+    echo -e "\e[32m 8. Exit \e[0m "
+
+	echo
+
+	read -p "Please choose option from above : " choice
+
+	case $choice in
+   		1) echo -e "RAM Usage"
+		    free -m
+		others
+	   ;;
+	2) echo -e "Disk usage"
+		    df -h
+others
+		   ;;
+	3) echo -e "CPU Usage"
+		    top -i
+
+		others
+		   ;;
+	4) echo -e "logged users"
+		    w
+		others
+		   ;;
+	5) echo -e "UP TIME"
+		    uptime
+		others
+		   ;;
+	6) echo -e "Network information"
+		    netstat -rnv
+others
+	
+		   ;;
+	7) echo -e "Date and Time"
+		    date
+others
+		   ;;
+  8) exit
+;;
+
+	*) echo -e "\e[91mPlease choose currect option\e[0m"
+		    welcome
+		    ;;
+
+	esac
+
+
+}
+welcome
+
+
